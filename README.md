@@ -14,7 +14,7 @@ cd ..; python download_glue.py
 We conduct our experiments with Python 3.6 and Pytorch 1.4.0.
 
 ## Running Experiments
-We provide an example for running experiment on CoLA. See [example_cola.sh](https://github.com/dguo98/diff-pruning/blob/main/experiments/example_cola.sh). For an example script for SST-2, see [example_sst2.sh](https://github.com/dguo98/diff-pruning/blob/main/experiments/example_sst2.sh) <br>
+We provide an example for running experiment on CoLA. See [example_cola.sh](https://github.com/dguo98/diff-pruning/blob/main/experiments/example_cola.sh). For an example script for SST-2, see [example_sst2.sh](https://github.com/dguo98/diff-pruning/blob/main/experiments/example_sst2.sh). <br>
 First set up paths, variables and hyper-parameters:
 ```
 EXP_NAME=cola
