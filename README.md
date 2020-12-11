@@ -14,7 +14,7 @@ cd ..; python download_glue.py
 We conduct our experiments with Python 3.6 and Pytorch 1.4.0.
 
 ## Running Experiments
-We provide an example for running experiment on CoLA. See ```experiments/example_cola.sh``` <br>
+We provide an example for running experiment on CoLA. See [example_cola.sh](https://github.com/dguo98/diff-pruning/blob/main/experiments/example_cola.sh) and (example_sst2.sh](https://github.com/dguo98/diff-pruning/blob/main/experiments/example_sst2.sh) <br>
 First set up paths, variables and hyper-parameters:
 ```
 EXP_NAME=cola
@@ -40,7 +40,7 @@ cd ${BASE_DIR}
 ```
 Next, run structured pruning.
 ```
-CUDA_VISIBLE_DEVICES=${GPU} python ${BASE_DIR}/examples/run_glue_old_diffpruning.py --model_type bert --model_name_or_path bert-large-cased-whole-word-masking --task_name ${TASK} --output_dir ${LOCAL_CKPT_DIR} --do_train --do_eval --data_dir ${LOCAL_DATA_DIR}/${DATA} --sparsity_pen ${SPARSITY_PEN} --concrete_lower ${CONCRETE_LOWER} --concrete_upper ${CONCRETE_UPPER} --num_train_epochs 3 --save_steps 5000 --seed ${SEED} --per_gpu_train_batch_size ${PER_GPU_TRAIN_BATCH_SIZE} --learning_rate ${LR}  --gradient_accumulation_steps ${GRADIENT_ACC} --fix_layer ${FIX_LAYER} --max_seq_length 128 --per_gpu_eval_batch_size 8 --overwrite_output_dir --logging_steps 5000 1>${LOCAL_CKPT_DIR}/${EXP_NAME}.out 2>${LOCAL_CKPT_DIR}/${EXP_NAME}.err
+CUDA_VISIBLE_DEVICES=${GPU} python ${BASE_DIR}/examples/run_glue_diffpruning.py --model_type bert --model_name_or_path bert-large-cased-whole-word-masking --task_name ${TASK} --output_dir ${LOCAL_CKPT_DIR} --do_train --do_eval --data_dir ${LOCAL_DATA_DIR}/${DATA} --sparsity_pen ${SPARSITY_PEN} --concrete_lower ${CONCRETE_LOWER} --concrete_upper ${CONCRETE_UPPER} --num_train_epochs 3 --save_steps 5000 --seed ${SEED} --per_gpu_train_batch_size ${PER_GPU_TRAIN_BATCH_SIZE} --learning_rate ${LR}  --gradient_accumulation_steps ${GRADIENT_ACC} --fix_layer ${FIX_LAYER} --max_seq_length 128 --per_gpu_eval_batch_size 8 --overwrite_output_dir --logging_steps 5000 1>${LOCAL_CKPT_DIR}/${EXP_NAME}.out 2>${LOCAL_CKPT_DIR}/${EXP_NAME}.err
 ```
 Finally, run magnitude pruning and fixmask finetuning.
 ```
