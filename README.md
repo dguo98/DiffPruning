@@ -36,8 +36,8 @@ wget https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v1.1.json
 cd ..
 ```
 ## Running Diff Pruning Experiments
-Here, we provide an example for running on CoLA dataset of GLUE benchmark. <br.
-See more examples of full scripts (e.g. SST-2) in [Experiments Folder](https://github.com/dguo98/diff-pruning/blob/main/experiments) <br>
+Here, we provide an example for running on CoLA dataset of GLUE benchmark. <br>
+See more examples of full scripts (e.g. SST-2) in the [experiments](https://github.com/dguo98/diff-pruning/blob/main/experiments) folder <br>
 
 First, specify environmental variables and hyperparameters. Feel free to adapt based on your needs.
 ```
