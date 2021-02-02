@@ -293,7 +293,7 @@ def train(args, train_dataset, model, tokenizer):
 	print("modelkeys=", model.state_dict().keys())
 	total_layers = 14 if "base" in args.model_name_or_path else 26
 	if args.sparsity_penalty_per_layer is None:
-		sparsity_pen = [args.sparsity_pen] * total_layers  # NB(demi)
+		sparsity_pen = [args.sparsity_pen] * total_layers  # NB(anon)
 	else:
 		sparsity_pen = args.sparsity_penalty_per_layer
 		assert len(sparsity_pen) == total_layers,  "invalid sparsity penalty per layer: # of layers mismatch"
@@ -355,7 +355,7 @@ def train(args, train_dataset, model, tokenizer):
 			else:
 				log_ratio = np.log(-args.concrete_lower / args.concrete_upper)
 
-			# HACK(demi): sparsity_pen_for_14_layers
+			# HACK(anon): sparsity_pen_for_14_layers
 			# l0_pen = 0
 			l0_pen = [0] * total_layers
 			l0_pen_sum = 0
@@ -479,7 +479,7 @@ def train(args, train_dataset, model, tokenizer):
 				scheduler.step()  # Update learning rate schedule
 				#model.zero_grad()
 				params_norm = [0, 0, 0, 0, 0, 0]
-				# TODO(demi): think about expecation when we have multiplication of alpha
+				# TODO(anon): think about expecation when we have multiplication of alpha
 				exp_z = 0
 				for n, p in bert_params.items():
 					"""
@@ -537,7 +537,7 @@ def train(args, train_dataset, model, tokenizer):
 
 				if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:
 					# Save model checkpoint
-					# HACK(demi)
+					# HACK(anon)
 					os.system("rm -rf %s/checkpoint-*" % (args.output_dir))
 					model_to_save = (
 						model.module if hasattr(model, "module") else model
@@ -562,7 +562,7 @@ def train(args, train_dataset, model, tokenizer):
 
 					"""
 					if global_step % (args.save_steps * 5) == 0:
-						# HACK(demi): prevent memory exceed ?!
+						# HACK(anon): prevent memory exceed ?!
 						model_to_save.save_pretrained(output_dir)
 						tokenizer.save_pretrained(output_dir)
 

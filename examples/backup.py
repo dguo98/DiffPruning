@@ -318,7 +318,7 @@ def train(args, train_dataset, model, tokenizer):
 	set_seed(args)	# Added here for reproductibility
 	total_layers = 14 if "base" in args.model_name_or_path else 26
 	if args.sparsity_penalty_per_layer is None:
-		sparsity_pen = [args.sparsity_pen] * total_layers  # NB(demi)
+		sparsity_pen = [args.sparsity_pen] * total_layers  # NB(anon)
 	else:
 		sparsity_pen = args.sparsity_penalty_per_layer
 		assert len(sparsity_pen) == total_layers,  "invalid sparsity penalty per layer: # of layers mismatch"
@@ -361,7 +361,7 @@ def train(args, train_dataset, model, tokenizer):
 			else:
 				log_ratio = np.log(-args.concrete_lower / args.concrete_upper)
 
-			# HACK(demi): sparsity_pen_for_14_layers
+			# HACK(anon): sparsity_pen_for_14_layers
 			# l0_pen = 0
 			l0_pen = [0] * total_layers
 			l0_pen_sum = 0
