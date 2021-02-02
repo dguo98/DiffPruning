@@ -58,6 +58,9 @@ from transformers import (
     XLNetConfig,
     XLNetForSequenceClassification,
     XLNetTokenizer,
+    AutoConfig,
+    AutoTokenizer,
+    AutoModelForSequenceClassification,
     get_linear_schedule_with_warmup,
 )
 from transformers import glue_compute_metrics as compute_metrics
@@ -74,6 +77,10 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+
+ALL_MODELS=[""]
+
+"""
 ALL_MODELS = sum(
     (
         tuple(conf.pretrained_config_archive_map.keys())
@@ -90,6 +97,7 @@ ALL_MODELS = sum(
     ),
     (),
 )
+"""
 
 MODEL_CLASSES = {
     "bert": (BertConfig, BertForSequenceClassification, BertTokenizer),
@@ -100,6 +108,7 @@ MODEL_CLASSES = {
     "albert": (AlbertConfig, AlbertForSequenceClassification, AlbertTokenizer),
     "xlmroberta": (XLMRobertaConfig, XLMRobertaForSequenceClassification, XLMRobertaTokenizer),
     "flaubert": (FlaubertConfig, FlaubertForSequenceClassification, FlaubertTokenizer),
+    "automodel": (AutoConfig, AutoModelForSequenceClassification, AutoTokenizer),
 }
 
 
