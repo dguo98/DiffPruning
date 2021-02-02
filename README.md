@@ -26,7 +26,7 @@ cd transformers
 pip install --editable .
 cd ..
 ```
-Finally, we download GLUE and SQuAD v1.1 datasets.
+Finally, we download GLUE and SQuAD v1.1 datasets. The GLUE dataset can also be downloaded [here](https://drive.google.com/file/d/17RnJsRUZqmLArXACLxfLj62jkVEvl1ty/view?usp=sharing).
 ```
 python download_glue.py
 mkdir squad
