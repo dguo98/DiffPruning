@@ -299,7 +299,7 @@ def train(args, train_dataset, model, tokenizer):
     #print("modelkeys=", model.state_dict().keys())
     total_layers = 14 if "base" in args.model_name_or_path else 26
     if args.sparsity_penalty_per_layer is None:
-        sparsity_pen = [args.sparsity_pen] * total_layers  # NB(demi)
+        sparsity_pen = [args.sparsity_pen] * total_layers  # NB(anon)
     else:
         sparsity_pen = args.sparsity_penalty_per_layer
         assert len(sparsity_pen) == total_layers,  "invalid sparsity penalty per layer: # of layers mismatch"

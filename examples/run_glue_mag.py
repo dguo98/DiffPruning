@@ -408,7 +408,7 @@ def train(args, train_dataset, model, tokenizer):
                     logger.info("Saving all training information: bert params, z, nonzero_params to %s", "checkpoint-%d-info.pt" % global_step)
 
                     if global_step % (args.save_steps * 3) == 0:
-                        # HACK(demi): prevent memory exceed ?!
+                        # HACK(anon): prevent memory exceed ?!
                         model_to_save.save_pretrained(output_dir)
                         tokenizer.save_pretrained(output_dir)
 

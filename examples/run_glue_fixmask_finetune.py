@@ -469,7 +469,7 @@ def train(args, train_dataset, model, tokenizer):
                         torch.save(info_dict, os.path.join(args.output_dir, "checkpoint-best-info.pt"))
                         logger.info("Saving all training information: bert params, z, nonzero_params to checkpoint-best-info.pt")
 
-                        # NB(demi): save best to current directory
+                        # NB(anon): save best to current directory
                         model_to_save.save_pretrained(output_dir)
                         tokenizer.save_pretrained(output_dir)
 
@@ -893,7 +893,7 @@ def main():
         logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)
 
     # Saving best-practices: if you use defaults names for the model, you can reload it using from_pretrained()
-    # NB(demi): load best fine-tuned checkpoint
+    # NB(anon): load best fine-tuned checkpoint
     if args.do_train and (args.local_rank == -1 or torch.distributed.get_rank() == 0):
         # Load a trained model and vocabulary that you have fine-tuned
         model = model_class.from_pretrained(args.output_dir)
